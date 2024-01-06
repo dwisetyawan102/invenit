@@ -1,3 +1,7 @@
+dbinvenit
+
+tbinvenit
+
 id int primary key A.I
 merk varchar 100
 gambar varchar 100
