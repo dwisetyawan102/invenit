@@ -1,0 +1,33 @@
+.my-color-light {
+  color: #fff;
+}
+
+.my-color-light:hover {
+  color: #ffffffb9;
+}
+
+.my-padding-top-long {
+  padding-top: 100px;
+}
+
+td {
+  text-align: center;
+}
+
+
+
+
+.text-center {
+  text-align: center;
+}
+.text {
+  text-decoration: none;
+  color: #fff;
+}
+.text-black {
+  text-decoration: none;
+  color: black;
+}
+.width-input-group {
+  width: 250px;
+}
