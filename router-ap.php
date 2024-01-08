@@ -1,16 +1,10 @@
 <?php 
-  // ini_set('display_errors', true);
-  // ini_set('display_startup_errors', true);
-  // error_reporting(E_ALL);
-
-  // echo phpinfo(); die;
-
   require "function.php";
-  $assets = query("SELECT * FROM tbinvenit ORDER BY id DESC");
+  $assets = query("SELECT * FROM tbinvenit WHERE kategori = 'Router / AP' ORDER BY id DESC");
 
   // pagination
   $numberOfDataPerPage = 10;
-  $result = mysqli_query($db, "SELECT * FROM tbinvenit");
+  $result = mysqli_query($db, "SELECT * FROM tbinvenit WHERE kategori = 'Router / AP'");
   $numberOfData = mysqli_num_rows($result);
   $numberOfPages = ceil($numberOfData / $numberOfDataPerPage);
   if( isset($_GET["page"]) ) {
@@ -20,7 +14,7 @@
   }
   $beginningData = ( $numberOfDataPerPage * $activePage ) - $numberOfDataPerPage;
 
-  $assets = query("SELECT * FROM tbinvenit ORDER BY id DESC LIMIT $beginningData, $numberOfDataPerPage");
+  $assets = query("SELECT * FROM tbinvenit WHERE kategori = 'Router / AP' ORDER BY id DESC LIMIT $beginningData, $numberOfDataPerPage");
 
   if( isset($_POST["cari"]) ) {
     $assets = search($_POST["keyword"]);
@@ -73,13 +67,13 @@
       <div class="offcanvas-body">
         <ul class="list-group">
           <!-- <li class="list-group-item" aria-current="true"><i class="bi bi-speedometer2"></i> Dashboard</li> -->
-          <li class="list-group-item active">
-            <a href="index.php" style="color: #fff; text-decoration: none;">
+          <li class="list-group-item">
+            <a href="index.php" style="color: #000; text-decoration: none;">
               <i class="bi bi-view-list"></i> Semua
             </a>
           </li>
-          <li class="list-group-item">
-            <a href="router-ap.php" style="color: #000; text-decoration: none;">
+          <li class="list-group-item active">
+            <a href="router-ap.php" style="color: #fff; text-decoration: none;">
               <i class="bi bi-router-fill"></i> Router / AP</li>
             </a>
           <li class="list-group-item">
@@ -113,14 +107,6 @@
       <button class="mb-2 btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
           <i class="bi bi-collection"></i> Kategori
       </button>
-    
-
-    <form action="" method="post">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Cari berdasarkan merk / kategori" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
-      <button class="btn btn-outline-primary" type="submit" id="button-addon2" name="cari">Search</button>
-    </div>
-    </form>
 
     <table class="table table-striped table-hover">
       <thead>
